@@ -47,7 +47,7 @@ public class Q07_RequestPipeline {
                 normalQueue.offerLast(parts[1]);
             } else if ("URGENT".equals(type) && parts.length == 2) {
                 urgentQueue.offerLast(parts[1]);
-            } else if ("PROCESS".equals(type)) {
+            } else if ("PROCESS".equals(type) && parts.length == 1) {
                 String next = urgentQueue.isEmpty()
                         ? normalQueue.pollFirst()
                         : urgentQueue.pollFirst();

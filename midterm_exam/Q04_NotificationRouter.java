@@ -16,14 +16,14 @@ public class Q04_NotificationRouter {
 
         @Override
         public boolean supports(String destination) {
-            if (destination == null) {
+            if (destination == null || destination.isEmpty()) {
                 return false;
             }
-            int at = destination.indexOf('@');
-            if (at <= 0 || at == destination.length() - 1) {
+            if (destination.indexOf('@') == -1) {
                 return false;
             }
-            return destination.indexOf('@', at + 1) == -1;
+            return destination.charAt(0) != '@'
+                    && destination.charAt(destination.length() - 1) != '@';
         }
 
         @Override
